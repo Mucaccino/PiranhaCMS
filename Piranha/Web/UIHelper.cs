@@ -90,7 +90,11 @@ namespace Piranha.Web
 
 			str.AppendLine("<meta name=\"generator\" content=\"Piranha CMS " +
 				FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).ProductVersion + "\" />") ;
-	        str.AppendLine("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />") ;
+
+            HttpContext ctx = HttpContext.Current;
+            if (ctx.Request.ServerVariables["HTTP_USER_AGENT"] != null &&
+                ctx.Request.ServerVariables["HTTP_USER_AGENT"].ToString().IndexOf("MSIE") > -1)
+                str.AppendLine("<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" />");
 
 			/**
 			 * Basic meta tags
