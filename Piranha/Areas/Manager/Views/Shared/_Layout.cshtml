@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>@ViewBag.Title</title>
 
+    @if (File.Exists(Server.MapPath("~/areas/manager/content/img/icon.ico")))
+    {
+    <link href="~/areas/manager/content/img/icon.ico" rel="icon" type="image/x-icon">
+    <link href="~/areas/manager/content/img/icon.ico" rel="shortcut icon" type="image/x-icon"> 
+    }
+    else
+    {
     <link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="icon" type="image/x-icon">
     <link href="~/res.ashx/areas/manager/content/img/icon.ico" rel="shortcut icon" type="image/x-icon"> 
+    }
     <link href="~/res.ashx/areas/manager/content/css/ext/chosen.min.css" rel="stylesheet" type="text/css"/>
     <link href="~/res.ashx/areas/manager/content/css/ext/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" />
     <link href="~/res.ashx/areas/manager/content/css/style.min.css" rel="stylesheet" type="text/css"/>
@@ -42,7 +50,14 @@
         <div class="container_12">
             <div class="grid_12 header">
                 <a class="home" href="@Url.Action("index", "page")">
-                    <img src="~/res.ashx/areas/manager/content/img/logo.png" alt="Piranha CMS" /></a>
+                    @if (File.Exists(Server.MapPath("~/areas/manager/content/img/logo.png")))
+                    {
+                        <img src="~/areas/manager/content/img/logo.png" alt="@Piranha.WebPages.WebPiranha.CurrentSite.MetaTitle" />
+                    }
+                    else
+                    {
+                        <img src="~/res.ashx/areas/manager/content/img/logo.png" alt="Piranha CMS" />
+                    }</a>
                 <div class="site-title">
                     <span>@Piranha.WebPages.WebPiranha.CurrentSite.MetaTitle</span>
                     <a class="public-site" target="preview" href="@Piranha.WebPages.WebPiranha.GetSiteUrl()">
