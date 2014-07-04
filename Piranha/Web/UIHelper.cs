@@ -511,10 +511,12 @@ namespace Piranha.Web
 				if (Hooks.Menu.RenderItemStart != null) {
 					Hooks.Menu.RenderItemStart(this, str, page, active, childactive) ;
 				} else {
-					var hasChild = page.Pages.Count > 0 ? " has-child" : "" ;
-					str.AppendLine("<li" + (curr.Id == page.Id ? " class=\"active" + hasChild + "\"" : 
-						(ChildActive(page, curr.Id) ? " class=\"active-child" + hasChild + "\"" :
-						(page.Pages.Count > 0 ? " class=\"has-child\"" : ""))) + ">") ;
+                    var hasChild = page.Pages.Count > 0 ? " has-child" : "";
+                    var isStartpage = page.IsStartpage ? " startpage" : "";
+                    str.AppendLine("<li" + (curr.Id == page.Id ? " class=\"active" + hasChild + isStartpage + "\"" :
+                        (ChildActive(page, curr.Id) ? " class=\"active-child" + hasChild + isStartpage + "\"" :
+                        (page.Pages.Count > 0 ? " class=\"has-child" + isStartpage + "\"" :
+                        (page.IsStartpage ? " class=\"startpage\"" : "")))) + ">");
 				}
 				// Render item link
 				if (Hooks.Menu.RenderItemLink != null) {
