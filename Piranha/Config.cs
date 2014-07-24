@@ -94,6 +94,18 @@ namespace Piranha
 			}
 		}
 
+        /// <summary>
+        /// Gets the route manager url. If the value is not
+        /// specified the default 'manager' is used.
+        /// </summary>
+        public static string ManagerRouteUrl
+        {
+            get {
+				var str = config.Settings.ManagerRouteUrl.Value ;
+				return (!String.IsNullOrEmpty(str)) ? str : "manager" ;
+            }
+        }
+
 		/// <summary>
 		/// Gets if the application is running in passive mode or not.
 		/// </summary>

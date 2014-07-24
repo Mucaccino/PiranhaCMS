@@ -48,9 +48,10 @@ namespace Piranha
 		#region Members
 		private const string DISABLE_METHOD_BINDING = "disableMethodBinding" ;
 		private const string DISABLE_MODELSTATE_BINDING = "disableModelStateBinding" ;
-		private const string DISABLE_MANAGER = "disableManager" ;
+        private const string DISABLE_MANAGER = "disableManager";
 		private const string DISABLE_TYPE_BUILDER = "disableTypeBuilder";
-		private const string MANAGER_NAMESPACES = "managerNamespaces" ;
+        private const string MANAGER_NAMESPACES = "managerNamespaces";
+        private const string MANAGER_ROUTE_URL = "managerRouteUrl";
 		private const string PASSIVE_MODE = "passiveMode" ;
 		private const string PREFIXLESS_PERMALINKS = "prefixlessPermalinks" ;
 		#endregion
@@ -81,6 +82,16 @@ namespace Piranha
 			get { return (BooleanElement)this[DISABLE_MANAGER] ; }
 			set { this[DISABLE_MANAGER] = value ; }
 		}
+
+        /// <summary>
+        /// Gets/sets the renamed manager route url.
+        /// </summary>
+        [ConfigurationProperty(MANAGER_ROUTE_URL, IsRequired = false)]
+        public StringElement ManagerRouteUrl
+        {
+            get { return (StringElement)this[MANAGER_ROUTE_URL]; }
+            set { this[MANAGER_ROUTE_URL] = value; }
+        }
 
 		/// <summary>
 		/// Gets/sets the additional manager namespaces.
@@ -126,8 +137,9 @@ namespace Piranha
 			DisableMethodBinding = new BooleanElement() ;
 			DisableModelStateBinding = new BooleanElement() ;
 			DisableManager = new BooleanElement() ;
-			DisableTypeBuilder = new BooleanElement();
-			ManagerNamespaces = new StringElement() ;
+			DisableTypeBuilder = new BooleanElement() ;
+            ManagerNamespaces = new StringElement();
+            ManagerRouteUrl = new StringElement();
 		}
 	}
 

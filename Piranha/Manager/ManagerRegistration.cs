@@ -34,7 +34,7 @@ namespace Piranha.Manager
 				// Register manager routing
 				context.MapRoute(
 					"Manager",
-					"manager/{controller}/{action}/{id}",
+					String.Format("{0}/{{controller}}/{{action}}/{{id}}", Config.ManagerRouteUrl),
 					new { area = "manager", controller = "account", action = "index", id = UrlParameter.Optional },
 					namespaces.Union(Config.ManagerNamespaces).ToArray()
 				).DataTokens["UseNamespaceFallback"] = false ;
