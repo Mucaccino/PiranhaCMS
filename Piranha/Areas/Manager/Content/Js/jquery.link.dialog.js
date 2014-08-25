@@ -19,7 +19,7 @@ piranha.link = function (siteId, buttonId, floatboxId, callback) {
         $('#' + self.boxId + ' .box > div').remove();
         floatBox.show(self.boxId);
         $.ajax({
-            url: siteroot + 'manager/dialog/link/' + self.siteId,
+            url: sitemanager + '/dialog/link/' + self.siteId,
             success: function (data) {
                 $('#' + self.boxId + ' .box').html('');
                 $('#' + self.boxId + ' .box').append(data);
@@ -32,7 +32,7 @@ piranha.link = function (siteId, buttonId, floatboxId, callback) {
 
         $('#' + self.boxId + ' .link-page .loader').fadeIn('fast', function () {
             $.ajax({
-                url: siteroot + "manager/page/get/" + $(that).attr("data-id"),
+                url: sitemanager + "/page/get/" + $(that).attr("data-id"),
                 dataType: "json",
                 success: function (data) {
                     if (self.cb)

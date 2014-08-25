@@ -88,7 +88,7 @@ $(document).ready(function () {
                 'You must enter information for all of the fields in order to add a new region.');
         } else {
             $.ajax({
-                url: siteroot + 'manager/template/regiontemplate',
+                url: sitemanager + '/template/regiontemplate',
                 type: 'POST',
                 dataType: 'html',
                 data: JSON.stringify(data),

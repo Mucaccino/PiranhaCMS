@@ -42,7 +42,7 @@
                 dateFormat: "yy-mm-dd"
             });
             $('#btnGenerate').click(function () {
-                $.getJSON(siteroot + "manager/settings/apikey", function (data) {
+                $.getJSON(sitemanager + "/settings/apikey", function (data) {
                     $('#User_APIKey').val(data.Key);
                     $('.apikey').text(data.Key);
                 });

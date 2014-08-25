@@ -263,7 +263,7 @@ namespace Piranha.WebPages
 
 					// Ensure database
 					if (args[0] == "" && SysParam.GetByName("SITE_VERSION") == null) {
-						context.Response.Redirect("~/manager", false) ;
+						context.Response.Redirect(String.Concat("~/", Piranha.Config.ManagerRouteUrl), false) ;
 						context.Response.EndClean() ;
 					}
 
@@ -305,7 +305,7 @@ namespace Piranha.WebPages
 					// If no handler was found and we are using prefixless permalinks, 
 					// route traffic to the permalink handler.
 					if (!Config.PassiveMode) {
-						if (!handled && Config.PrefixlessPermalinks && args[pos].ToLower() != "manager" && String.IsNullOrEmpty(context.Request["permalink"])) {
+						if (!handled && Config.PrefixlessPermalinks && args[pos].ToLower() != Piranha.Config.ManagerRouteUrl && String.IsNullOrEmpty(context.Request["permalink"])) {
 							if (Permalink.GetByName(Config.SiteTreeNamespaceId, args[pos]) != null || Permalink.GetByName(Config.DefaultNamespaceId, args[pos]) != null) {
 								var handler = Application.Current.Handlers["PERMALINK"] ;
 								handler.HandleRequest(context, args.Subset(pos)) ;
