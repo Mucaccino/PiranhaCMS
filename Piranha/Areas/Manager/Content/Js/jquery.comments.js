@@ -21,24 +21,24 @@ piranha.comment = function (parentId, notificationId, containerId) {
             if (data.New > 0)
                 notification.show();
             else notification.hide();
-            $.get(siteroot + 'manager/comment/list/' + self.parentId, function (data) {
+            $.get(sitemanager + '/comment/list/' + self.parentId, function (data) {
                 $('#' + self.contId).html(data);
             });
         }
     };
     this.approveClick = function () {
         var id = $(this).attr('data-id');
-        $.get(siteroot + 'manager/comment/ajaxapprove/' + id, self.updateComments);
+        $.get(sitemanager + '/comment/ajaxapprove/' + id, self.updateComments);
         return false;
     };
     this.rejectClick = function () {
         var id = $(this).attr('data-id');
-        $.get(siteroot + 'manager/comment/ajaxreject/' + id, self.updateComments);
+        $.get(sitemanager + '/comment/ajaxreject/' + id, self.updateComments);
         return false;
     };
     this.deleteClick = function () {
         var id = $(this).attr('data-id');
-        $.get(siteroot + 'manager/comment/ajaxdelete/' + id, self.updateComments);
+        $.get(sitemanager + '/comment/ajaxdelete/' + id, self.updateComments);
         return false;
     };
     this.expandClick = function () {

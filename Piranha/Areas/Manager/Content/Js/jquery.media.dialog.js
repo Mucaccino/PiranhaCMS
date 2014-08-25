@@ -24,7 +24,7 @@ piranha.media = function (buttonId, floatboxId, callback) {
         $('#' + self.boxId + ' .box > div').remove();
         floatBox.show(self.boxId);
         $.ajax({
-            url: siteroot + 'manager/content/popup' + (piranha.folderId ? '/' + piranha.folderId : '') + '?tinymce=' + self.tinymce + '&filter=' + self.filter,
+            url: sitemanager + '/content/popup' + (piranha.folderId ? '/' + piranha.folderId : '') + '?tinymce=' + self.tinymce + '&filter=' + self.filter,
             success: function (data) {
                 $('#' + self.boxId + ' .box').html('');
                 $('#' + self.boxId + ' .box').append(data);
@@ -39,7 +39,7 @@ piranha.media = function (buttonId, floatboxId, callback) {
         if (!$(this).hasClass("folder")) {
             $('#' + self.boxId + ' .media-existing .loader').fadeIn('fast', function () {
                 $.ajax({
-                    url: siteroot + "manager/content/get/" + $(that).attr("data-id") + '?tinymce=' + self.tinymce,
+                    url: sitemanager + "/content/get/" + $(that).attr("data-id") + '?tinymce=' + self.tinymce,
                     dataType: "json",
                     success: function (data) {
                         if (self.cb)
@@ -57,7 +57,7 @@ piranha.media = function (buttonId, floatboxId, callback) {
 
         $('#' + self.boxId + ' .media-existing .loader').fadeIn('fast', function () {
             $.ajax({
-                url: siteroot + "manager/content/popup/" + $(that).attr("data-id") + '?tinymce=' + self.tinymce + '&filter=' + self.filter,
+                url: sitemanager + "/content/popup/" + $(that).attr("data-id") + '?tinymce=' + self.tinymce + '&filter=' + self.filter,
                 success: function (data) {
                     $('#' + self.boxId + ' .box').html('');
                     $('#' + self.boxId + ' .box').append(data);
@@ -88,7 +88,7 @@ piranha.media = function (buttonId, floatboxId, callback) {
 
         $('#' + self.boxId + ' .media-new .loader').fadeIn('fast', function () {
             $.ajax({
-                url: siteroot + 'manager/content/upload',
+                url: sitemanager + '/content/upload',
                 type: 'POST',
                 contentType: 'multipart/form-data',
                 dataType: 'json',
